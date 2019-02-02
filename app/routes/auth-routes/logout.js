@@ -1,8 +1,8 @@
 const express = require('express');
 const router  = express.Router();
 
-router.post('/login', (req, res, next) => {
-    res.render('login');
-});
+router.get('/logout', (req, res, next) => {
+    res.render(logout);
+})
 
 module.exports = router;
