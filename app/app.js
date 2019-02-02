@@ -11,7 +11,7 @@ const path         = require('path');
 const session      = require('express-session');
 const passport     = require('passport');
 const cors         = require('cors');
-require('./configs/passport')
+require('./config/passport')
 
 
 
@@ -77,6 +77,6 @@ const index = require('./routes/index');
 app.use('/', index);
 
 const login = require('./routes/auth-routes/login');
-app.use('/login', login)
+app.use('/', login);
 
 module.exports = app;
