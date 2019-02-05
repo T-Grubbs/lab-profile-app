@@ -2,27 +2,30 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/login', (req, res, next) => {
-	passport.authenticate('local', (err, theUser, failureDetails) => {
-		if (err) {
-			res.json({ message: 'Something went wrong authenticating user' });
-			return;
-		}
+  passport.authenticate('local', (err, theUser, failureDetails) => {
+      if (err) {
+          res.json({ message: 'Something went wrong authenticating user' });
+          return;
+      }
+  
+      if (!theUser) {
+          // "failureDetails" contains the error messages
+          // from our logic in "LocalStrategy" { message: '...' }.
+          res.json(failureDetails);
+          return;
+      }
 
-		if (!theUser) {
-			res.json(failureDetails);
-			return;
-		}
+      // save user in session
+      req.login(theUser, (err) => {
+          if (err) {
+              res.json({ message: 'Session save went bad.' });
+              return;
+          }
 
-		req.login(theUser, (err) => {
-			if (err) {
-				res.json({ message: 'Session save went bad.' });
-				return;
-			}
-
-			res.json(theUser);
-			console.log(theUser);
-		});
-	})(req, res, next);
+          // We are now logged in (that's why we can also send req.user)
+          res.json(theUser);
+      });
+  })(req, res, next);
 });
 
 module.exports = router;
