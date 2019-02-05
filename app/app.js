@@ -76,7 +76,7 @@ app.use(cors({
 const index = require('./routes/index');
 app.use('/', index);
 
-const login = require('./routes/auth-routes/login');
+const login = require('./routes/user-routes');
 app.use('/', login);
 
 module.exports = app;
