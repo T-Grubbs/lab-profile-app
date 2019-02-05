@@ -65,10 +65,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
+//Here is where you place the address of the client sides
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:3000', '*']
+  origin: ['http://localhost:3000',]
 }));
 
 
@@ -76,7 +76,9 @@ app.use(cors({
 const index = require('./routes/index');
 app.use('/', index);
 
-const login = require('./routes/user-routes');
-app.use('/', login);
+const userRoutes = require('./routes/user-routes');
+app.use('/api', userRoutes);
+
+
 
 module.exports = app;
