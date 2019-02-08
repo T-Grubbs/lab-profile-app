@@ -7,24 +7,33 @@ class Navbar extends Component {
 			<ul className="nav nav-tabs">
 				<li className="nav-item">
 					<a className="nav-link active" href="#">
-						Active
+						Home
 					</a>
 				</li>
 				<li className="nav-item">
 					<a className="nav-link" href="#">
-						Link
+						About Me
 					</a>
 				</li>
 				<li className="nav-item">
 					<a className="nav-link" href="#">
-						Link
+						Resume
 					</a>
 				</li>
 				<li className="nav-item">
 					<a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
-						Disabled
+						Projects
 					</a>
 				</li>
+                <li className="nav-item">
+					<a className="nav-link" href="#">
+						Soon to change
+					</a>
+				</li>
+
+
+
+
 			</ul>
 		);
 	}
