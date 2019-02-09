@@ -79,6 +79,9 @@ app.use('/', index);
 const userRoutes = require('./routes/user-routes');
 app.use('/api', userRoutes);
 
-
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 module.exports = app;
